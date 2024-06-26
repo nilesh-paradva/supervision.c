@@ -1,16 +1,21 @@
 #include<stdio.h>
 
+
 int main(){
 
     char ch;
-    int count =0;
+    int num = 0;
 
     FILE* fptr = fopen("document.txt", "r");
 
-    if (ch == ' ' || ch == 0) count++;
-      
-    printf("words in number count: %d", count);  
-    fclose(fptr);   
+    while((ch = fgetc(fptr)) != EOF){
+        if((ch ==' ') || (ch == '\n')){
+            num++;
+        }
+    }
+    
+    fclose(fptr);
+    printf("Number of words in file %d", num + 1);
 
     return 0;
 }
